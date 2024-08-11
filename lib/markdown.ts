@@ -9,7 +9,7 @@ import rehypeCodeTitles from "rehype-code-titles";
 import { page_routes } from "./routes-config";
 import { visit } from "unist-util-visit";
 
-// custom components imports
+// Custom components imports
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Pre from "@/components/pre";
 import Note from "@/components/note";
@@ -20,7 +20,7 @@ type MdxFrontmatter = {
   description: string;
 };
 
-// add custom components
+// Add custom components
 const components = {
   Tabs,
   TabsContent,
@@ -55,14 +55,15 @@ export async function getMarkdownForSlug(slug: string) {
       components,
     });
   } catch (err) {
-    console.log(err);
+    console.error("Error reading or compiling MDX file:", err);
+    return null;
   }
 }
 
 export async function getTocs(slug: string) {
   const contentPath = getContentPath(slug);
   const rawMdx = await fs.readFile(contentPath, "utf-8");
-  // captures between ## - #### can modify accordingly
+  // Captures between ## - ####, can modify accordingly
   const headingsRegex = /^(#{2,4})\s(.+)$/gm;
   let match;
   const extractedHeadings = [];
@@ -80,7 +81,7 @@ export async function getTocs(slug: string) {
 }
 
 export function getPreviousNext(path: string) {
-  const index = page_routes.findIndex(({ href }) => href == path);
+  const index = page_routes.findIndex(({ href }) => href === path);
   return {
     prev: page_routes[index - 1],
     next: page_routes[index + 1],
@@ -93,10 +94,11 @@ function sluggify(text: string) {
 }
 
 function getContentPath(slug: string) {
-  return path.join(process.cwd(), "/contents/docs/", `${slug}.mdx`);
+  // Ensure `slug` is properly encoded
+  return path.join(process.cwd(), "contents", "phylum", `${slug}.mdx`);
 }
 
-// for copying the code
+// For copying the code
 const preProcess = () => (tree: any) => {
   visit(tree, (node) => {
     if (node?.type === "element" && node?.tagName === "pre") {
@@ -111,7 +113,7 @@ const postProcess = () => (tree: any) => {
   visit(tree, "element", (node) => {
     if (node?.type === "element" && node?.tagName === "pre") {
       node.properties["raw"] = node.raw;
-      // console.log(node);
+      // console.log(node); // Optional for debugging
     }
   });
 };

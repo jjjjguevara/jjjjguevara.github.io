@@ -13,14 +13,18 @@ type PageProps = {
 const cachedGetMarkdownForSlug = cache(getMarkdownForSlug);
 
 export default async function DocsPage({ params: { slug = [] } }: PageProps) {
-  const pathName = slug.join("/");
+  // Join and decode the slug to handle special characters
+  const pathName = decodeURIComponent(slug.join("/"));
   const res = await cachedGetMarkdownForSlug(pathName);
 
-  if (!res) notFound();
+  if (!res) {
+    notFound();
+  }
+
   return (
     <div className="flex items-start gap-12">
       <div className="flex-[3] pt-10">
-        <DocsBreadcrumb paths={slug} />
+        <DocsBreadcrumb paths={slug.map((part) => decodeURIComponent(part))} />
         <Markdown>
           <h1>{res.frontmatter.title}</h1>
           <p className="-mt-4 text-muted-foreground text-[16.5px]">
@@ -44,7 +48,7 @@ function Markdown({ children }: PropsWithChildren) {
 }
 
 export async function generateMetadata({ params: { slug = [] } }: PageProps) {
-  const pathName = slug.join("/");
+  const pathName = decodeURIComponent(slug.join("/"));
   const res = await cachedGetMarkdownForSlug(pathName);
   if (!res) return null;
   const { frontmatter } = res;
