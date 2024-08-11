@@ -1,5 +1,4 @@
 import { ModeToggle } from "@/components/theme-toggle";
-import { GithubIcon, TwitterIcon } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "./ui/button";
 import Search from "./search";
@@ -7,7 +6,7 @@ import Anchor from "./anchor";
 import { SheetLeftbar } from "./leftbar";
 import { page_routes } from "@/lib/routes-config";
 import { SheetClose } from "@/components/ui/sheet";
-import MuonBrain from "../components/myicons";
+import { MuonBrain, GhubIcon, XIcon } from "../components/myicons"; // Import your custom icons
 
 export const NAVLINKS = [
   {
@@ -35,7 +34,7 @@ export const NAVLINKS = [
 export function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2.5">
-      <MuonBrain /> {/* Use the icon component */}
+      <MuonBrain /> {/* Use the custom icon */}
       <h2 className="text-md font-bold">jjjjguevara/docs</h2>
     </Link>
   );
@@ -90,7 +89,7 @@ export function Navbar() {
                 href="https://github.com/jjjjguevara/"
                 className={buttonVariants({ variant: "ghost", size: "icon" })}
               >
-                <GithubIcon className="h-[1.1rem] w-[1.1rem]" />
+                <GhubIcon /> {/* Use custom GitHub icon */}
               </Link>
               <Link
                 href="https://x.com/jjjjguevara/"
@@ -99,7 +98,7 @@ export function Navbar() {
                   size: "icon",
                 })}
               >
-                <TwitterIcon className="h-[1.1rem] w-[1.1rem]" />
+                <XIcon /> {/* Use custom Twitter icon */}
               </Link>
               <ModeToggle />
             </div>

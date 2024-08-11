@@ -1,14 +1,35 @@
 // src/components/myicons.tsx
 import Image from "next/image";
 
-const MuonBrain = () => (
+// MuonBrain Icon Component
+export const MuonBrain = () => (
   <Image
     src="/muon_brain.svg"
-    alt="Custom Icon"
-    width={28} // Adjust width as needed
-    height={28} // Adjust height as needed
-    className="w-7 h-7" // Adjust className if needed
+    alt="Muon Brain Icon"
+    width={28}
+    height={28}
+    className="w-7 h-7"
   />
 );
 
-export default MuonBrain;
+// GitHub Icon Component
+export const GhubIcon = () => (
+  <Image
+    src="/github_logo.svg"
+    alt="GitHub Icon"
+    width={28}
+    height={28}
+    className="w-7 h-7"
+  />
+);
+
+// Twitter Icon Component
+export const XIcon = () => (
+  <Image
+    src="/twitter_icon.svg"
+    alt="Twitter Icon"
+    width={28}
+    height={28}
+    className="w-7 h-7"
+  />
+);
