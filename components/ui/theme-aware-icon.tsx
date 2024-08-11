@@ -43,7 +43,7 @@ export const ThemeAwareIcon: React.FC<ThemeAwareIconProps> = ({
   }, []);
 
   if (!mounted) {
-    // Render a fallback or nothing while waiting for client-side rendering
+    // Render a fallback icon or nothing while waiting for client-side rendering
     return null;
   }
 
@@ -57,9 +57,10 @@ export const ThemeAwareIcon: React.FC<ThemeAwareIconProps> = ({
     return null;
   }
 
+  // Render the IconComponent with props conditionally
   return (
     <IconComponent
-      alt={alt}
+      alt={alt} // TypeScript error here
       width={width}
       height={height}
       className={className}
