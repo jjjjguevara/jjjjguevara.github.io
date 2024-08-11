@@ -11,11 +11,11 @@ import MuonBrain from "../components/myicons";
 
 export const NAVLINKS = [
   {
-    title: "Documentation",
+    title: "Portfolio",
     href: `/docs/${page_routes[0].href}`,
   },
   {
-    title: "Examples",
+    title: "Articles",
     href: "#",
   },
   {
@@ -23,11 +23,11 @@ export const NAVLINKS = [
     href: "#",
   },
   {
-    title: "Community",
+    title: "Blog",
     href: "#",
   },
   {
-    title: "Blog",
+    title: "About",
     href: "#",
   },
 ];
