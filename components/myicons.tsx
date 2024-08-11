@@ -33,3 +33,36 @@ export const XIcon = () => (
     className="w-7 h-7"
   />
 );
+
+// MuonBrain Icon Component White
+export const MuonBrainW = () => (
+  <Image
+    src="/muon_brain_w.svg"
+    alt="Muon Brain Icon White"
+    width={28}
+    height={28}
+    className="w-7 h-7"
+  />
+);
+
+// GitHub Icon Component White
+export const GhubIconW = () => (
+  <Image
+    src="/github_logo_w.svg"
+    alt="GitHub Icon White"
+    width={28}
+    height={28}
+    className="w-7 h-7"
+  />
+);
+
+// Twitter Icon Component White
+export const XIconW = () => (
+  <Image
+    src="/twitter_logo_w.svg"
+    alt="Twitter Icon White"
+    width={28}
+    height={28}
+    className="w-7 h-7"
+  />
+);
