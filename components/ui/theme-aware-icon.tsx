@@ -9,12 +9,15 @@ import {
   MuonBrainW,
   GhubIconW,
   XIconW,
+  SubstIcon,
+  SubstIconW,
 } from "@/components/myicons";
 
 const iconMap = {
   muonBrain: { light: MuonBrain, dark: MuonBrainW },
   github: { light: GhubIcon, dark: GhubIconW },
   twitter: { light: XIcon, dark: XIconW },
+  substack: { light: SubstIcon, dark: SubstIconW },
 };
 
 export type IconType = keyof typeof iconMap;
@@ -60,10 +63,10 @@ export const ThemeAwareIcon: React.FC<ThemeAwareIconProps> = ({
 
   return (
     <Icon
-      alt={alt as any} // Explicitly cast to any if necessary
-      width={width as any} // Explicitly cast to any if necessary
-      height={height as any} // Explicitly cast to any if necessary
-      className={className as any} // Explicitly cast to any if necessary
+      alt={alt as any}
+      width={width as any}
+      height={height as any}
+      className={className as any}
     />
   );
 };

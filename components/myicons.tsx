@@ -66,3 +66,25 @@ export const XIconW = () => (
     className="w-7 h-7"
   />
 );
+
+// Substack Icon Component
+export const SubstIcon = () => (
+  <Image
+    src="/substack_icon.svg"
+    alt="Substack Icon"
+    width={28}
+    height={28}
+    className="w-7 h-7"
+  />
+);
+
+// Substack Icon Component White
+export const SubstIconW = () => (
+  <Image
+    src="/substack_icon_w.svg"
+    alt="Substack Icon White"
+    width={28}
+    height={28}
+    className="w-7 h-7"
+  />
+);

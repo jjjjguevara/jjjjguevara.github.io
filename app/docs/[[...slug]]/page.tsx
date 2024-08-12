@@ -53,6 +53,7 @@ export async function generateMetadata({ params: { slug = [] } }: PageProps) {
   if (!res) return null;
   const { frontmatter } = res;
   return {
+    metadataBase: new URL("https://jjjjguevara.vercel.app"), // Removed trailing slash
     title: frontmatter.title,
     description: frontmatter.description,
   };

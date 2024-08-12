@@ -6,7 +6,7 @@ import Anchor from "./anchor";
 import { SheetLeftbar } from "./leftbar";
 import { page_routes } from "@/lib/routes-config";
 import { SheetClose } from "@/components/ui/sheet";
-import { ThemeAwareIcon } from "@/components/ui/theme-aware-icon"; // Correct import
+import { ThemeAwareIcon } from "@/components/ui/theme-aware-icon";
 
 export const NAVLINKS = [
   {
@@ -34,8 +34,8 @@ export const NAVLINKS = [
 export function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2.5">
-      <ThemeAwareIcon icon="muonBrain" alt="Logo" /> {/* Correct icon name */}
-      <h2 className="text-md font-bold">jjjjguevara/docs</h2>
+      <ThemeAwareIcon icon="muonBrain" alt="Logo" />
+      <h2 className="text-md font-bold">μ/jjjjguevara</h2>
     </Link>
   );
 }
@@ -90,15 +90,21 @@ export function Navbar() {
                 className={buttonVariants({ variant: "ghost", size: "icon" })}
               >
                 <ThemeAwareIcon icon="github" alt="GitHub" />{" "}
-                {/* Correct icon usage */}
               </Link>
+
               <Link
                 href="https://x.com/jjjjguevara/"
                 className={buttonVariants({ variant: "ghost", size: "icon" })}
               >
                 <ThemeAwareIcon icon="twitter" alt="Twitter" />{" "}
-                {/* Correct icon usage */}
               </Link>
+              <Link
+                href="https://substack.com/@jjjjguevara/"
+                className={buttonVariants({ variant: "ghost", size: "icon" })}
+              >
+                <ThemeAwareIcon icon="substack" alt="Substack" />{" "}
+              </Link>
+
               <ModeToggle />
             </div>
           </div>

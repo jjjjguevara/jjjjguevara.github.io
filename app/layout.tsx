@@ -6,6 +6,13 @@ import { GeistMono } from "geist/font/mono";
 import { Footer } from "@/components/footer";
 import "./globals.css";
 
+export const metadata: Metadata = {
+  metadataBase: new URL("https://jjjjguevara.vercel.app"), // Set the correct metadataBase here
+  title: "Your Default Title",
+  description: "Your default description",
+  // You can add more default metadata here if necessary
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
