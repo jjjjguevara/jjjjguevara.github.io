@@ -3,7 +3,7 @@ const joinPaths = (...paths: string[]): string => {
   return paths.join("/").replace(/\/{2,}/g, "/"); // Handle multiple slashes
 };
 
-// for page navigation & to sort on leftbar
+// For page navigation & to sort on leftbar
 export const ROUTES = [
   {
     title: "Índices",
@@ -15,6 +15,7 @@ export const ROUTES = [
       { title: "Project Structure", href: "/project-structure" },
       { title: "Changelog", href: "/changelog" },
       { title: "FAQ", href: "/faq" },
+      { title: "DITA Documentation", href: "/output/html5/index.html" }, // Correct path to static HTML
     ],
   },
 ];
