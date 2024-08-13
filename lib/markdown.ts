@@ -95,7 +95,7 @@ function sluggify(text: string) {
 
 function getContentPath(slug: string) {
   // Ensure `slug` is properly encoded
-  return path.join(process.cwd(), "contents", "phylum", `${slug}.mdx`);
+  return path.join(process.cwd(), "contents", "docs", `${slug}.mdx`);
 }
 
 // For copying the code
