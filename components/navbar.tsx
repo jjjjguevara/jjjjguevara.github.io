@@ -19,7 +19,7 @@ export const NAVLINKS = [
   },
   {
     title: "Guides",
-    href: "#",
+    href: "/docs/guides/C++ Notes",
   },
   {
     title: "Blog",

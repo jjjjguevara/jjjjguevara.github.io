@@ -1,0 +1,230 @@
+---
+title: C++ Notes
+description: Selected notes for self-study
+---
+
+<Note title="Related entries" type="success">
+  - Diagrams
+</Note>
+
+
+## 1. Traditional methods
+### 1.1 Intro
+#### 1.1.1 Topic outline
+- C++ programming language features
+- How C++ is the basis for other languages
+- Basic syntax (C 2, 3 & 5)
+- Data types, operators, and functions
+- Classes and objects
+- Templates - generic programming framework
+- Standard Template Library (STL)
+	- Library of containers and algorithms
+
+#### 1.1.2 General questions
+-
+
+### 1.2 Summary
+#### 1.2.1 Synthesis
+- Initially known as C with classes
+- Developed by Bjarne Stroustrup
+- Extended from C
+- C++ is a compiled language
+	- Requires a compilation step to be readable by the Operating System
+- The development cycle of an interpreted language is simpler
+	- Source code -> Run
+- The development cycle of compiled languages is
+	- Source code -> Preprocessor -> Compiler -> Linker -> Run
+		1. Preprocessor
+			- Expanding macros
+			- Providing conditional compilation
+			- Combining source files with included header files into a single file
+			- The output is a larger file called the translation unit
+		2. Compiler
+			- Takes the source code from each translation unit and compiles it into object code
+			- The object code includes a symbol table that allows it to link with code in other object files, including libraries
+			- The object file is not an executable
+		3. Linker
+			- Takes the object files and resolves their interdependencies
+			- Combines the object files into something the OS can run
+			- The output of the linker is an executable
+
+- **Use cases**
+	- Application
+	- OS
+	- Firmware
+	- Business web applications
+	- Large-scale graphics applications
+	- Web browsers and web applications
+	- Other programming languages
+
+- **Distinct parts of C++**
+	1. C language
+	2. C preprocessor
+	3. Classes and objects
+	4. Templates
+	5. Standard Template Library (STL)
+- **Versions of C++**
+	- C++98 / C++03
+	- C++11 - August 2011
+	- C++14 - December 2014
+	- C++17 - December 2017
+	- C++20 - December 2020
+
+- **C++ topics**
+	- Basic syntax
+	- Data types, operators, and functions
+	- Classes and objects
+	- Templates - programming framework
+	- Standard Template Library (STL)
+
+**Syntax Overview**
+- `statement` - unit of code terminated by `;`
+	- call functions
+	- declare variables
+	- operate on expressions
+- `function` - contained by `{}`
+	- larger unit of code
+	- may contain many statements
+	- reused and called by statements
+- `main function` - represented by `int main()`
+	- main entry point of any C++ program
+	- main is called by the OS when the program first launches
+- `variable`
+	- holds a value/s for later use
+	- variables must be declared befor being used
+- `#include`
+	- most C++ files have 1 or more `#include` directives
+	- tipically near the top of the file
+	- used to import libraries for use in the code
+		- libraries are external files
+
+**Anatomy of a C++ program**
+- `whitespace` - any characters normally invisible
+	- Usually ignored, unless required to distinguish between two words or tokens
+- `comments` - code annotations that are ignored by the compiler
+	- `//` - single-line comment
+	- `/*` `*/`  - multi-line comment
+- `main function`
+	- C++ programs must have a main function
+	- can have arguments to parse the command line
+		1. integer
+		2. array of strings
+- `functions`
+	- enclosed in `{}`
+	- runs whenever it's called
+	- if run, main returns an integer value
+		- `0` = the program exited normally
+		- `1` = error condition encountered
+	- A function that returns a **type** must always return a **value** of that type
+		- The only exception is the main function, where 0 is pressumed unless specified
+- `#include`
+	- instructs the preprocessor to include a header to pass to the compiler
+	- it's rare for a program not to include a header file
+- `printf` - printing output
+- `format` -
+- `print()` - future print
+- `namespaces` - allows to define names without conflicting with names already in used
+	- `::` - scope operator
+	- `using` - imports a name from the namespace
+
+**Statements and expressions**
+- `statement` - unit of code terminated by `;`
+	- analogous to a line of code
+	- treated as a unit of execution
+- `expression` - anything that returns a value, regardless if the value is used
+	- may be part of a statement or the statement itself
+- `identifiers` - provide readable names to variables, functions, classes, objects, labels, and defined types
+	- May not begin with a numeral
+	- ISO Latin Alphabet
+	- Western Arabic Numerals
+	- ASCII Underscore
+	- May not conflict with reserved the 73 keywords or 11 alternative tokens
+	- Case sensitive Az != aZ
+	- Non-latin characters are implementation-dependent
+	- It's recomended to keep identifiers under 31 characters long
+	- Initial _ should be avoided
+	- Consistency is key
+
+**Defining variables**
+- `variables` - may be declared with either ` =` or `{}`
+	- ` =` is also known as the assignment operator
+	- Variable types:
+		- `const` - constant variable - the value cannot be changed once defined (read only or immutable)
+			- `const` is an example of a variable *qualifier*
+		- `int` - integer variable
+		- `auto` - allows the compiler to determine the type of the variable
+			- i.e. if the value of the type is an integer `47` the compiler will determine `auto = int`
+			- this type still requires initialization
+
+**Pointers and references**
+- First we must understand how `variables` work
+- A `variable` is a *typed* and *named* **location** in memory
+	- Definition - `int x;`, memory is *allocated* for a value of *type* `int`, associated with the *name* `x`
+	- Assignment - `x = 1`, the integer value `1` is *copied* into the **memory location** associated with the integer variable `x`
+	- Definition - `int y;`, the name `y` represents a different integer in a different memory location than `x`
+	- Assignment - `y = x`, the value from the variable *named* `x` is copied into the variable *named* `y`
+		- Both variables occupy separate *locations* in memory and separate *definitions* but hold the same *value*
+- Variable *names* are effectively used as *indexes* to map to a memory address and a specific data type
+- C++ also uses so called *pointer* types
+	- In C++, pointers are type-aware
+	- like their name denotes, pointers *point* to a value instead of carrying the value themselves
+	- `int* ip;` - point to `int` value - the space before or after `*` is ignored by the compiler
+	- `ip = &x;` - `& = address of operator` - returns the address of an object
+	- `y = *ip;` - `dereference operator` - we access the value pointed to by the pointer - equals `y = x`
+	- A reference type is similar to a pointer but
+		- they don't use `*` dereference a reference (doesn't require special punctuation)
+		- the reference always holds the referenced variable - more akin to an alias
+		- there's no syntax to change a reference - once defined it can't be changed
+	- It's good practice to make a reference `const` anytime you declare it
+
+**Conditionals**
+- Conditional statements allow you to run one block of code or another based on a condition
+- If the condition evaluates as `true`, then the statement-block will be executed
+- The statement-block may be one or more statements enclosed in `{}`
+
+**Loops**
+- A loop creates a flow that only ends when the condition becomes `false`
+- C++ has 2 versions of the loop - one inherited from C and the other specific to C++
+-
+
+#### 1.2.2 Analysis
+- when a qualifier precedes a type in a variable, the qualifier becomes part of the type
+	- `const int` makes `int` a constant variable - `const int` is now the type
+-
+
+#### 1.2.3 Problems
+
+#### 1.2.4 Diagrams
+
+**Conditionals**
+<img src="/guides/c++ notes/if-condition.svg" alt="if condition" />
+<img src="/guides/c++ notes/if-else-condition.svg" alt="if else condition" />
+<img src="/guides/c++ notes/while-condition.svg" alt="while condition" />
+
+### 1.3 Technical resources
+#### 1.3.1 Concepts and ideas
+- Programming language
+- Templates
+- Coding paradigms
+- Object oriented
+- Procedural
+- General programming
+- Classes
+- Objects
+- Compiling
+- Translation unit
+- Object code
+- Typed and strongly typed
+- Qualifiers (variable)
+- Pointers and references
+- Conditionals
+	- Statement-blocks
+	- Clauses
+	- Relational operators
+	- Terniary condition operator `auto s = x < y ? "yes" : "no";`
+	- Loops
+		- While
+		- Loop control
+
+#### 1.3.1 Technologies
+- C++
