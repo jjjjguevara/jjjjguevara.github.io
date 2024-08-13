@@ -5,7 +5,6 @@ import { page_routes } from "@/lib/routes-config";
 import { notFound } from "next/navigation";
 import { getMarkdownForSlug } from "@/lib/markdown";
 import { PropsWithChildren, cache } from "react";
-import Head from "next/head"; // Import Head
 
 type PageProps = {
   params: { slug: string[] };
@@ -14,6 +13,7 @@ type PageProps = {
 const cachedGetMarkdownForSlug = cache(getMarkdownForSlug);
 
 export default async function DocsPage({ params: { slug = [] } }: PageProps) {
+  // Join and decode the slug to handle special characters and avoid double slashes
   const pathName = decodeURIComponent(slug.join("/")).replace(/\/{2,}/g, "/");
   const res = await cachedGetMarkdownForSlug(pathName);
 
@@ -22,46 +22,20 @@ export default async function DocsPage({ params: { slug = [] } }: PageProps) {
   }
 
   return (
-    <>
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#ffffff" />
-      </Head>
-      <div className="flex items-start gap-12">
-        <div className="flex-[3] pt-10">
-          <DocsBreadcrumb
-            paths={slug.map((part) => decodeURIComponent(part))}
-          />
-          <Markdown>
-            <h1>{res.frontmatter.title}</h1>
-            <p className="-mt-4 text-muted-foreground text-[16.5px]">
-              {res.frontmatter.description}
-            </p>
-            <div>{res.content}</div>
-            <Pagination pathname={pathName} />
-          </Markdown>
-        </div>
-        <Toc path={pathName} />
+    <div className="flex items-start gap-12">
+      <div className="flex-[3] pt-10">
+        <DocsBreadcrumb paths={slug.map((part) => decodeURIComponent(part))} />
+        <Markdown>
+          <h1>{res.frontmatter.title}</h1>
+          <p className="-mt-4 text-muted-foreground text-[16.5px]">
+            {res.frontmatter.description}
+          </p>
+          <div>{res.content}</div>
+          <Pagination pathname={pathName} />
+        </Markdown>
       </div>
-    </>
+      <Toc path={pathName} />
+    </div>
   );
 }
 
@@ -78,10 +52,15 @@ export async function generateMetadata({ params: { slug = [] } }: PageProps) {
   const res = await cachedGetMarkdownForSlug(pathName);
   if (!res) return null;
   const { frontmatter } = res;
+
   return {
     metadataBase: new URL("https://jjjjguevara.vercel.app"),
     title: frontmatter.title,
     description: frontmatter.description,
+    icons: {
+      icon: "/favicon.png",
+      apple: "/favicon-32x32.png", // Add alternative formats if needed
+    },
   };
 }
 
