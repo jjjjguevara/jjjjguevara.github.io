@@ -7,24 +7,32 @@ const joinPaths = (...paths: string[]): string => {
 export const ROUTES = [
   {
     title: "Índices",
-    href: "índices",
+    basePath: "/docs/índices",
     items: [
-      { title: "Índice de índices", href: "/índice-de-índices" },
+      { title: "Índice de índices", href: "/índice-de-índices" }, // Ensure file extension is correct
       { title: "Installation", href: "/installation" },
       { title: "Quick Start Guide", href: "/quick-start-guide" },
       { title: "Project Structure", href: "/project-structure" },
       { title: "Changelog", href: "/changelog" },
       { title: "FAQ", href: "/faq" },
-      { title: "DITA Documentation", href: "/output/html5/index.html" }, // Correct path to static HTML
+    ],
+  },
+  {
+    title: "Main",
+    basePath: "/docs/main",
+    items: [
+      { title: "Greetings", href: "/greetings" },
+      { title: "About", href: "/about" },
+      { title: "DITA Documentation", href: "/dita" }, // Ensure file extension is correct
     ],
   },
 ];
 
-export const page_routes = ROUTES.flatMap(({ href, items }) => {
+export const page_routes = ROUTES.flatMap(({ basePath, items }) => {
   return items.map((link) => {
     return {
       title: link.title,
-      href: joinPaths(href, link.href),
+      href: joinPaths(basePath, link.href), // Use basePath for correct directory
     };
   });
 });

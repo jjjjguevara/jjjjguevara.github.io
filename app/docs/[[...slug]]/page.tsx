@@ -27,7 +27,7 @@ export default async function DocsPage({ params: { slug = [] } }: PageProps) {
         <DocsBreadcrumb paths={slug.map((part) => decodeURIComponent(part))} />
         <Markdown>
           <h1>{res.frontmatter.title}</h1>
-          <p className="-mt-4 text-muted-foreground text">
+          <p className="-mt-4 text-muted-foreground text-[16.5px]">
             {res.frontmatter.description}
           </p>
           <div>{res.content}</div>
@@ -53,7 +53,7 @@ export async function generateMetadata({ params: { slug = [] } }: PageProps) {
   if (!res) return null;
   const { frontmatter } = res;
   return {
-    metadataBase: new URL("https://jjjjguevara.vercel.app"), // Removed trailing slash
+    metadataBase: new URL("https://jjjjguevara.vercel.app"),
     title: frontmatter.title,
     description: frontmatter.description,
   };

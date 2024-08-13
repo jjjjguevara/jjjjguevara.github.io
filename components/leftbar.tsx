@@ -56,34 +56,37 @@ export function SheetLeftbar() {
 function Menu({ isSheet = false }) {
   return (
     <>
-      {ROUTES.map(({ href, items, title }) => {
-        return (
-          <div className="flex flex-col gap-3 mt-5" key={href}>
-            <h4 className="font-medium sm:text-sm">{title}</h4>
-            <div className="flex flex-col gap-3 sm:text-sm dark:text-neutral-300/85 text-neutral-800 ml-0.5">
-              {items.map((subItem) => {
-                const key = `/docs/${href}${subItem.href}`;
-                const Comp = (
-                  <Anchor
-                    activeClassName="font-medium text-primary"
-                    key={key}
-                    href={key}
-                  >
-                    {subItem.title}
-                  </Anchor>
-                );
-                return isSheet ? (
-                  <SheetClose key={key} asChild>
-                    {Comp}
-                  </SheetClose>
-                ) : (
-                  Comp
-                );
-              })}
-            </div>
+      {ROUTES.map(({ basePath, items, title }) => (
+        <div className="flex flex-col gap-3 mt-5" key={basePath}>
+          <h4 className="font-medium sm:text-sm">{title}</h4>
+          <div className="flex flex-col gap-3 sm:text-sm dark:text-neutral-300/85 text-neutral-800 ml-0.5">
+            {items.map((subItem, index) => {
+              const key = joinPaths(basePath, subItem.href); // Use basePath
+              const Comp = (
+                <Anchor
+                  activeClassName="font-medium text-primary"
+                  key={key}
+                  href={key}
+                >
+                  {subItem.title}
+                </Anchor>
+              );
+              return isSheet ? (
+                <SheetClose key={key} asChild>
+                  {Comp}
+                </SheetClose>
+              ) : (
+                Comp
+              );
+            })}
           </div>
-        );
-      })}
+        </div>
+      ))}
     </>
   );
 }
+
+// Utility function to join paths safely
+const joinPaths = (...paths: string[]): string => {
+  return paths.join("/").replace(/\/{2,}/g, "/"); // Handle multiple slashes
+};
