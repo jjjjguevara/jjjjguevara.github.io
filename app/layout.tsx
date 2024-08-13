@@ -7,10 +7,9 @@ import { Footer } from "@/components/footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://jjjjguevara.vercel.app"), // Set the correct metadataBase here
-  title: "Your Default Title",
-  description: "Your default description",
-  // You can add more default metadata here if necessary
+  metadataBase: new URL("https://jjjjguevara.vercel.app"),
+  title: "μ/jjjjguevara",
+  description: "Nulla dies sine linea",
 };
 
 export default function RootLayout({

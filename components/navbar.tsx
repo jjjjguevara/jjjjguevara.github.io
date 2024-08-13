@@ -27,7 +27,7 @@ export const NAVLINKS = [
   },
   {
     title: "About",
-    href: "#",
+    href: "/docs/main/about",
   },
 ];
 

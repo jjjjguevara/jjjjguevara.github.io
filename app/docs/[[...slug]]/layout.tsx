@@ -9,7 +9,6 @@ export default function DocsLayout({
     <div className="flex items-start gap-14">
       <Leftbar />
       <div className="flex-1">{children}</div>{" "}
-      {/* Adjusted to flex-1 to take up remaining space */}
     </div>
   );
 }

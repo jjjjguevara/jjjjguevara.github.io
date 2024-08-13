@@ -27,7 +27,7 @@ export default async function DocsPage({ params: { slug = [] } }: PageProps) {
         <DocsBreadcrumb paths={slug.map((part) => decodeURIComponent(part))} />
         <Markdown>
           <h1>{res.frontmatter.title}</h1>
-          <p className="-mt-4 text-muted-foreground text-[16.5px]">
+          <p className="-mt-4 text-muted-foreground text">
             {res.frontmatter.description}
           </p>
           <div>{res.content}</div>
