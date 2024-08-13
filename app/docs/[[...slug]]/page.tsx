@@ -13,8 +13,8 @@ type PageProps = {
 const cachedGetMarkdownForSlug = cache(getMarkdownForSlug);
 
 export default async function DocsPage({ params: { slug = [] } }: PageProps) {
-  // Join and decode the slug to handle special characters
-  const pathName = decodeURIComponent(slug.join("/"));
+  // Join and decode the slug to handle special characters and avoid double slashes
+  const pathName = decodeURIComponent(slug.join("/")).replace(/\/{2,}/g, "/");
   const res = await cachedGetMarkdownForSlug(pathName);
 
   if (!res) {
@@ -48,7 +48,7 @@ function Markdown({ children }: PropsWithChildren) {
 }
 
 export async function generateMetadata({ params: { slug = [] } }: PageProps) {
-  const pathName = decodeURIComponent(slug.join("/"));
+  const pathName = decodeURIComponent(slug.join("/")).replace(/\/{2,}/g, "/");
   const res = await cachedGetMarkdownForSlug(pathName);
   if (!res) return null;
   const { frontmatter } = res;
@@ -61,6 +61,6 @@ export async function generateMetadata({ params: { slug = [] } }: PageProps) {
 
 export function generateStaticParams() {
   return page_routes.map((item) => ({
-    slug: item.href.split("/"),
+    slug: item.href.split("/").filter(Boolean), // Ensure no empty strings are included
   }));
 }
