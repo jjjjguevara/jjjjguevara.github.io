@@ -15,7 +15,7 @@ export const NAVLINKS = [
   },
   {
     title: "Articles",
-    href: "#",
+    href: "/docs/articles/tech-writing-ontology",
   },
   {
     title: "Guides",
