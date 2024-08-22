@@ -11,7 +11,7 @@ import { ThemeAwareIcon } from "@/components/ui/theme-aware-icon";
 export const NAVLINKS = [
   {
     title: "Portfolio",
-    href: `/docs/${page_routes[0].href}`,
+    href: `/docs/main/greetings`,
   },
   {
     title: "Articles",
