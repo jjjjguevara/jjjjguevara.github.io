@@ -29,7 +29,7 @@ export const ROUTES = [
     title: "Guides",
     basePath: "/docs/guides",
     items: [
-      { title: "Intro to C++", href: "/intro-to-c++" },
+      { title: "Intro to C++", href: "/intro-to-cplus2" },
       { title: "DITA Documentation", href: "/dita" },
     ],
   },
