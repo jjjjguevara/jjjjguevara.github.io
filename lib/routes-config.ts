@@ -26,6 +26,14 @@ export const ROUTES = [
     ],
   },
   {
+    title: "Articles",
+    basePath: "/docs/articles",
+    items: [
+      { title: "Understanding tech writing", href: "/tech-writing-ontology" },
+      { title: "Lessons from developing docs", href: "/developing-docs" },
+    ],
+  },
+  {
     title: "Guides",
     basePath: "/docs/guides",
     items: [
