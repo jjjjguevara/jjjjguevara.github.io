@@ -11,6 +11,8 @@ import {
   XIconW,
   SubstIcon,
   SubstIconW,
+  in_bl,
+  in_w,
 } from "@/components/myicons";
 
 const iconMap = {
@@ -18,6 +20,7 @@ const iconMap = {
   github: { light: GhubIcon, dark: GhubIconW },
   twitter: { light: XIcon, dark: XIconW },
   substack: { light: SubstIcon, dark: SubstIconW },
+  linkedin: { light: in_bl, dark: in_w },
 };
 
 export type IconType = keyof typeof iconMap;

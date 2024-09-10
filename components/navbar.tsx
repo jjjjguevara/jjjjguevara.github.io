@@ -91,7 +91,6 @@ export function Navbar() {
               >
                 <ThemeAwareIcon icon="github" alt="GitHub" />{" "}
               </Link>
-
               <Link
                 href="https://x.com/jjjjguevara/"
                 className={buttonVariants({ variant: "ghost", size: "icon" })}
@@ -99,12 +98,17 @@ export function Navbar() {
                 <ThemeAwareIcon icon="twitter" alt="Twitter" />{" "}
               </Link>
               <Link
+                href="https://www.linkedin.com/in/jjjjguevara/"
+                className={buttonVariants({ variant: "ghost", size: "icon" })}
+              >
+                <ThemeAwareIcon icon="linkedin" alt="LinkedIn" />{" "}
+              </Link>
+              <Link
                 href="https://substack.com/@jjjjguevara/"
                 className={buttonVariants({ variant: "ghost", size: "icon" })}
               >
                 <ThemeAwareIcon icon="substack" alt="Substack" />{" "}
               </Link>
-
               <ModeToggle />
             </div>
           </div>

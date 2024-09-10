@@ -88,3 +88,25 @@ export const SubstIconW = () => (
     className="w-7 h-7"
   />
 );
+
+// LinkedIn Icon Component
+export const in_bl = () => (
+  <Image
+    src="/in_bl.svg"
+    alt="Substack Icon"
+    width={28}
+    height={28}
+    className="w-7 h-7"
+  />
+);
+
+// LinkedIn Icon Component White
+export const in_w = () => (
+  <Image
+    src="/in_w.svg"
+    alt="Substack Icon White"
+    width={28}
+    height={28}
+    className="w-7 h-7"
+  />
+);
